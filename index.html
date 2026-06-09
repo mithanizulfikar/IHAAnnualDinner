@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IHA Family Dinner 2026 — Register</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+:root {
+  --white:     #ffffff;
+  --bg:        #f4f5f7;
+  --bg2:       #eaecef;
+  --border:    #e1e4e9;
+  --border2:   #cdd0d8;
+  --text:      #111827;
+  --text2:     #4b5563;
+  --text3:     #9ca3af;
+  --primary:   #1e3a5f;
+  --primary-h: #162d4a;
+  --primary-lt:#e8edf4;
+  --accent:    #16a34a;
+  --accent-lt: #dcfce7;
+  --accent-h:  #15803d;
+  --red:       #dc2626;
+  --red-lt:    #fef2f2;
+  --amber:     #d97706;
+  --amber-lt:  #fef3c7;
+  --radius:    8px;
+  --radius-sm: 5px;
+  --font:      'Plus Jakarta Sans', system-ui, sans-serif;
+  --shadow:    0 1px 3px rgba(0,0,0,.07),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 14px rgba(0,0,0,.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.5}
+
+/* ── TOP BAR ── */
+.topbar{background:var(--primary);height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:200}
+.brand{display:flex;align-items:center;gap:9px;color:#fff;font-weight:700;font-size:15px}
+.brand-icon{width:30px;height:30px;background:rgba(255,255,255,.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px}
+.nav-link{color:rgba(255,255,255,.6);font-size:12.5px;padding:5px 11px;border-radius:4px;cursor:pointer;border:none;background:none;font-family:var(--font);transition:.15s}
+.nav-link:hover{background:rgba(255,255,255,.1);color:#fff}
+
+/* ── HERO ── */
+.hero{background:var(--primary);padding:44px 24px 50px;text-align:center;position:relative;overflow:hidden;border-bottom:3px solid var(--accent)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(22,163,74,.15),transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:4px 13px;font-size:11px;font-weight:600;color:rgba(255,255,255,.65);letter-spacing:.07em;text-transform:uppercase;margin-bottom:18px}
+.live-dot{width:6px;height:6px;background:#4ade80;border-radius:50%;animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-title{font-size:clamp(26px,4vw,42px);font-weight:700;color:#fff;letter-spacing:-.4px;line-height:1.15;margin-bottom:8px}
+.hero-sub{font-size:14.5px;color:rgba(255,255,255,.5);max-width:440px;margin:0 auto 26px;line-height:1.65}
+.hero-pills{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);overflow:hidden;font-size:12px}
+.hero-pill{padding:9px 16px;color:rgba(255,255,255,.65);border-right:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:6px;font-weight:500}
+.hero-pill:last-child{border-right:none}
+.hero-pill i{color:#4ade80;font-size:11px}
+.seats-tag{position:absolute;top:16px;right:18px;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:4px;letter-spacing:.06em;text-transform:uppercase}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1020px;margin:0 auto;padding:32px 18px 60px;display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start}
+@media(max-width:780px){.wrap{grid-template-columns:1fr}}
+
+/* ── CARD ── */
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:16px}
+.card:last-child{margin-bottom:0}
+.card-head{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.ch-icon{width:30px;height:30px;background:var(--primary-lt);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:13px;flex-shrink:0}
+.ch-title{font-size:13.5px;font-weight:600}
+.ch-sub{font-size:11.5px;color:var(--text3);margin-top:1px}
+.card-body{padding:20px}
+
+/* ── FIELDS ── */
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:500px){.row2{grid-template-columns:1fr}}
+.field{margin-bottom:14px}
+.field:last-child{margin-bottom:0}
+.field label{display:block;font-size:11.5px;font-weight:600;color:var(--text2);margin-bottom:5px}
+.req{color:var(--red);margin-left:2px}
+.field input,.field select,.field textarea{width:100%;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:9px 11px;font-family:var(--font);font-size:13.5px;color:var(--text);outline:none;transition:border .15s,box-shadow .15s;-webkit-appearance:none;appearance:none}
+.field input::placeholder,.field textarea::placeholder{color:var(--text3)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-lt)}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='6'%3E%3Cpath d='M1 1l4.5 4L10 1' stroke='%239ca3af' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:30px;cursor:pointer}
+.hint{font-size:11px;color:var(--text3);margin-top:3px}
+.err-msg{font-size:11px;color:var(--red);margin-top:3px;display:none}
+.field.err input,.field.err select{border-color:var(--red);box-shadow:0 0 0 3px var(--red-lt)}
+.field.err .err-msg{display:block}
+.divider{height:1px;background:var(--border);margin:16px 0}
+
+/* ── TICKET TYPES ── */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:16px}
+.ttype{border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:11px 8px;text-align:center;cursor:pointer;transition:.15s;position:relative}
+.ttype:hover{border-color:var(--primary)}
+.ttype.sel{border-color:var(--primary);background:var(--primary-lt)}
+.ttype input{display:none}
+.tt-badge{position:absolute;top:-7px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:9px;font-weight:700;padding:1px 7px;border-radius:8px;letter-spacing:.05em}
+.tt-name{font-size:12px;font-weight:600;display:block;margin-bottom:2px;color:var(--text)}
+.tt-price{font-size:12.5px;font-weight:700;color:var(--primary)}
+
+/* ── CONSENT ── */
+.con-row{display:flex;gap:9px;align-items:flex-start;margin-bottom:12px}
+.con-row input[type=checkbox]{width:14px;height:14px;margin-top:2px;accent-color:var(--primary);cursor:pointer;flex-shrink:0}
+.con-text{font-size:12px;color:var(--text2);line-height:1.5}
+.con-text a{color:var(--primary)}
+
+/* ── SUBMIT BTN ── */
+.btn-reg{width:100%;padding:13px 18px;background:var(--primary);border:none;border-radius:var(--radius-sm);color:#fff;font-family:var(--font);font-size:14px;font-weight:600;letter-spacing:.02em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s,transform .1s;margin-top:4px}
+.btn-reg:hover{background:var(--primary-h)}
+.btn-reg:active{transform:translateY(1px)}
+.btn-reg:disabled{opacity:.55;cursor:not-allowed}
+.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── SIDEBAR ── */
+.scard{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;position:sticky;top:64px}
+.sc-head{background:var(--primary);padding:18px 20px;position:relative}
+.sc-head::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),#4ade80)}
+.sc-eyebrow{font-size:10px;font-weight:600;color:rgba(255,255,255,.45);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.sc-title{font-size:15px;font-weight:700;color:#fff;line-height:1.3}
+.sc-body{padding:16px 20px}
+.sc-item{display:flex;gap:11px;margin-bottom:14px;align-items:flex-start}
+.sc-icon{width:30px;height:30px;background:var(--bg);border:1px solid var(--border);border-radius:5px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:12px;flex-shrink:0}
+.sc-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin-bottom:2px}
+.sc-val{font-size:13px;font-weight:600;color:var(--text)}
+.sc-sub{font-size:11px;color:var(--text3);margin-top:1px}
+.sc-div{height:1px;background:var(--border);margin:12px 0}
+.cap-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px}
+.cap-track{height:4px;background:var(--bg2);border-radius:2px;overflow:hidden}
+.cap-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));width:73%;border-radius:2px}
+
+/* ── SUCCESS ── */
+#success-screen{display:none;max-width:720px;margin:0 auto;padding:36px 18px 60px}
+#success-screen.on{display:block;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.suc-banner{background:var(--accent-lt);border:1px solid #86efac;border-radius:var(--radius);padding:18px 20px;display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.suc-icon{width:42px;height:42px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;flex-shrink:0}
+.suc-title{font-size:16px;font-weight:700;color:#14532d;margin-bottom:2px}
+.suc-sub{font-size:12.5px;color:#166534;line-height:1.5}
+
+/* email sent strip */
+.email-sent-strip{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--text2);margin-bottom:20px}
+.email-sent-strip i{color:var(--primary);font-size:16px;flex-shrink:0}
+
+/* ── TICKET ── */
+.ticket-shell{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-md);overflow:hidden;margin-bottom:20px}
+.ticket-topbar{background:var(--bg);padding:9px 18px;border-bottom:1px solid var(--border);font-size:10.5px;font-weight:600;color:var(--text3);letter-spacing:.07em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.ticket-confirmed{background:var(--accent-lt);color:var(--accent-h);font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.06em}
+
+.ticket-card{background:linear-gradient(140deg,#1e3a5f 0%,#0f2240 100%);position:relative;overflow:hidden}
+.tc-pattern{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:26px 26px;pointer-events:none}
+.tc-bar{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16a34a,#4ade80,#16a34a)}
+
+/* header row */
+.tc-hdr{padding:22px 26px 18px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.tc-org{font-size:9.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#4ade80;margin-bottom:4px}
+.tc-evname{font-size:19px;font-weight:700;color:#fff;line-height:1.2}
+.tc-metas{display:flex;gap:18px;flex-wrap:wrap;margin-top:11px}
+.tc-m .k{font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:2px}
+.tc-m .v{font-size:12px;font-weight:500;color:rgba(255,255,255,.82)}
+.tc-logobox{width:50px;height:50px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+
+/* tear */
+.tc-tear{position:relative;height:1px;background:rgba(255,255,255,.08);margin:0 -1px}
+.tc-tear::before,.tc-tear::after{content:'';position:absolute;top:-8px;width:17px;height:17px;background:var(--bg);border-radius:50%}
+.tc-tear::before{left:-8px}
+.tc-tear::after{right:-8px}
+
+/* body */
+.tc-body{padding:18px 26px 22px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+.tc-att-lbl{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:5px}
+.tc-name{font-size:20px;font-weight:700;color:#fff;letter-spacing:-.2px;margin-bottom:3px}
+.tc-detail{font-size:11.5px;color:rgba(255,255,255,.52);margin-bottom:2px}
+.tc-tid{font-size:10px;font-weight:700;color:#4ade80;letter-spacing:.05em;margin-top:10px}
+.tc-qr{background:#fff;padding:8px;border-radius:5px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.tc-qr canvas,.tc-qr img{display:block}
+.tc-ql{font-size:7.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#4b5563}
+
+.tc-foot{background:rgba(0,0,0,.22);padding:9px 26px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.06)}
+.tc-fid{font-size:9.5px;color:rgba(255,255,255,.28);letter-spacing:.04em}
+.tc-tbadge{font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:var(--accent);color:#fff;padding:3px 9px;border-radius:3px}
+
+/* ── ACTIONS ── */
+.actions{display:flex;gap:9px;flex-wrap:wrap}
+.btn-a{flex:1;min-width:120px;padding:10px 14px;border-radius:var(--radius-sm);font-family:var(--font);font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:.15s;border:none}
+.btn-dark{background:var(--primary);color:#fff}
+.btn-dark:hover{background:var(--primary-h)}
+.btn-green{background:var(--accent);color:#fff}
+.btn-green:hover{background:var(--accent-h)}
+.btn-out{background:var(--white);color:var(--text);border:1.5px solid var(--border)}
+.btn-out:hover{border-color:var(--primary);color:var(--primary)}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:22px;right:22px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 8px 28px rgba(0,0,0,.12);padding:13px 16px;display:flex;align-items:center;gap:10px;font-size:13px;z-index:9999;transition:all .3s;max-width:300px}
+.toast.hide{opacity:0;pointer-events:none;transform:translateY(8px)}
+.toast-icon{font-size:18px;flex-shrink:0}
+.toast strong{display:block;font-weight:600;font-size:13px;margin-bottom:1px}
+.toast span{font-size:11.5px;color:var(--text3)}
+
+/* ── CONFIG BANNER ── */
+.config-banner{background:var(--amber-lt);border:1px solid #fbbf24;border-radius:var(--radius);padding:12px 16px;font-size:12.5px;color:#92400e;margin-bottom:16px;display:none}
+.config-banner.show{display:block}
+.config-banner strong{font-weight:700}
+
+@media print{
+  body>*:not(#success-screen){display:none!important}
+  #success-screen{display:block!important}
+  .actions,.email-sent-strip,.suc-banner,.toast{display:none!important}
+}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<nav class="topbar">
+  <div class="brand">
+    <div class="brand-icon">🏪</div>
+    IHA Online Shop
+  </div>
+  <div style="display:flex;gap:4px">
+    <button class="nav-link">About</button>
+    <button class="nav-link">Contact</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="seats-tag">⚡ LIMITED SEATS</div>
+  <div class="hero-badge"><div class="live-dot"></div>IHA Family Event · Karachi 2026</div>
+  <h1 class="hero-title">IHA Family Dinner 2026</h1>
+  <p class="hero-sub">An Evening of Unity, Celebration, and Gratitude — Where the IHA Family Comes Together to Honor Bonds, Share Success, and Create Timeless Memories That Last Beyond the Night..</p>
+  <div class="hero-pills">
+    <div class="hero-pill"><i class="fa-regular fa-calendar"></i>Sunday, 26 July 2026</div>
+    <div class="hero-pill"><i class="fa-regular fa-clock"></i>8:00 PM — 9:30 PM</div>
+    <div class="hero-pill"><i class="fa-solid fa-location-dot"></i>PC Hotel, Karachi</div>
+  </div>
+</section>
+
+<!-- FORM PAGE -->
+<div id="form-page">
+  <div class="wrap">
+
+    <!-- LEFT COLUMN -->
+    <div>
+
+      <!-- ① Personal Info -->
+      <div class="card">
+        <div class="card-head">
+          <div class="ch-icon"><i class="fa-regular fa-user"></i></div>
+          <div><div class="ch-title">Personal Information</div><div class="ch-sub">Your name and contact details</div></div>
+        </div>
+        <div class="card-body">
+          <div class="row2">
+            <div class="field" id="f-fn">
+              <label>First Name <span class="req">*</span></label>
+              <input type="text" id="firstname" placeholder="Zulfee Mithani" autocomplete="given-name">
+              <div class="err-msg">Please enter your first name</div>
+            </div>
+            <div class="field" id="f-ln">
+              <label>Last Name <span class="req">*</span></label>
+              <input type="text" id="lastname" placeholder="Memon" autocomplete="family-name">
+              <div class="err-msg">Please enter your last name</div>
+            </div>
+          </div>
+          <div class="field" id="f-em">
+            <label>Email Address <span class="req">*</span></label>
+            <input type="email" id="email" placeholder="Zulfee Mithani@company.com" autocomplete="email">
+            <div class="hint">📩 Your ticket will be delivered to this address</div>
+            <div class="err-msg">Please enter a valid email address</div>
+          </div>
+          <div class="field">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" placeholder="+92 300 0000000" autocomplete="tel">
+            <div class="hint">Optional — for urgent event updates only</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ② Professional Details -->
+      <div class="card">
+        <div class="card-head">
+          <div class="ch-icon"><i class="fa-solid fa-briefcase"></i></div>
+          <div><div class="ch-title">Professional Details</div><div class="ch-sub">Printed on your registration card</div></div>
+        </div>
+        <div class="card-body">
+          <div class="field" id="f-co">
+            <label>Company / Organisation <span class="req">*</span></label>
+            <input type="text" id="company" placeholder="e.g. Systems Ltd." autocomplete="organization">
+            <div class="err-msg">Please enter your company name</div>
+          </div>
+          <div class="row2">
+            <div class="field" id="f-de">
+              <label>Designation / Title <span class="req">*</span></label>
+              <input type="text" id="designation" placeholder="e.g. Senior Manager" autocomplete="organization-title">
+              <div class="err-msg">Please enter your designation</div>
+            </div>
+            <div class="field">
+              <label>Industry</label>
+              <select id="industry">
+                <option value="">Select industry</option>
+                <option>Technology</option>
+                <option>Finance &amp; Banking</option>
+                <option>Healthcare</option>
+                <option>Education</option>
+                <option>Retail &amp; E-commerce</option>
+                <option>Manufacturing</option>
+                <option>Media &amp; Marketing</option>
+                <option>Government &amp; NGO</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ③ Ticket -->
+      <div class="card">
+        <div class="card-head">
+          <div class="ch-icon"><i class="fa-solid fa-ticket"></i></div>
+          <div><div class="ch-title">Ticket Type</div><div class="ch-sub">Select your registration category</div></div>
+        </div>
+        <div class="card-body">
+          <div class="tgrid">
+            <label class="ttype sel" onclick="selT(this,'Standard')">
+              <input type="radio" name="ticket" value="Standard" checked>
+              <div class="tt-badge">FREE</div>
+              <span class="tt-name">Standard</span>
+              <span class="tt-price">PKR 0</span>
+            </label>
+            <label class="ttype" onclick="selT(this,'VIP')">
+              <input type="radio" name="ticket" value="VIP">
+              <span class="tt-name">VIP</span>
+              <span class="tt-price">PKR 3,500</span>
+            </label>
+            <label class="ttype" onclick="selT(this,'Corporate')">
+              <input type="radio" name="ticket" value="Corporate">
+              <span class="tt-name">Corporate</span>
+              <span class="tt-price">PKR 8,000</span>
+            </label>
+          </div>
+          <div class="field">
+            <label>Dietary Preference</label>
+            <select id="dietary">
+              <option value="">No preference</option>
+              <option>Halal</option>
+              <option>Vegetarian</option>
+              <option>Vegan</option>
+              <option>Gluten-free</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- ④ Consent & Submit -->
+      <div class="card">
+        <div class="card-body">
+
+          <div class="con-row">
+            <input type="checkbox" id="ct">
+            <span class="con-text">I agree to the <a href="#">Terms &amp; Conditions</a> and <a href="#">Privacy Policy</a>. I consent to receive event communications at the email address provided.</span>
+          </div>
+          <div class="con-row">
+            <input type="checkbox" id="cp">
+            <span class="con-text">I consent to event photography and videography. My image may appear in post-event materials.</span>
+          </div>
+          <button class="btn-reg" id="reg-btn" onclick="handleRegister()">
+            <span id="rbt"><i class="fa-solid fa-paper-plane"></i> Register &amp; Send My Ticket</span>
+            <span id="rbs" style="display:none;align-items:center;gap:8px"><div class="spinner"></div>Sending your ticket...</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div>
+      <div class="scard">
+        <div class="sc-head">
+          <div class="sc-eyebrow">Event Details</div>
+          <div class="sc-title">IHA Family Annual Dinner</div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-item">
+            <div class="sc-icon"><i class="fa-regular fa-calendar-days"></i></div>
+            <div><div class="sc-lbl">Date</div><div class="sc-val">Sunday, 26 July 2026</div><div class="sc-sub">Doors open at 7:30 PM</div></div>
+          </div>
+          <div class="sc-item">
+            <div class="sc-icon"><i class="fa-regular fa-clock"></i></div>
+            <div><div class="sc-lbl">Time</div><div class="sc-val">8:00 PM — 9:30 PM PKT</div><div class="sc-sub">Formal dinner &amp; networking</div></div>
+          </div>
+          <div class="sc-item">
+            <div class="sc-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div><div class="sc-lbl">Venue</div><div class="sc-val">PC Hotel, Club Road</div><div class="sc-sub">Karachi, Sindh — Pakistan</div></div>
+          </div>
+          <div class="sc-item">
+            <div class="sc-icon"><i class="fa-solid fa-users"></i></div>
+            <div><div class="sc-lbl">Capacity</div><div class="sc-val">500 Guests</div><div class="sc-sub">Formal seated dinner</div></div>
+          </div>
+          <div class="sc-div"></div>
+          <div class="cap-row">
+            <span style="color:var(--text2)">Seats remaining</span>
+            <span style="font-weight:700;color:var(--red)">134 / 500</span>
+          </div>
+          <div class="cap-track"><div class="cap-fill"></div></div>
+          <div style="font-size:11px;color:var(--red);font-weight:500;margin-top:4px"><i class="fa-solid fa-triangle-exclamation"></i> Filling fast</div>
+          <div class="sc-div"></div>
+          <div style="display:flex;align-items:center;gap:10px;background:var(--bg);padding:10px;border-radius:6px;border:1px solid var(--border)">
+            <div style="width:34px;height:34px;background:var(--primary);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:17px">🏪</div>
+            <div><div style="font-size:13px;font-weight:600">IHA Online Shop</div><div style="font-size:11px;color:var(--text3)">events@ihashop.pk</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SUCCESS SCREEN -->
+<div id="success-screen">
+  <div class="suc-banner">
+    <div class="suc-icon"><i class="fa-solid fa-check"></i></div>
+    <div>
+      <div class="suc-title">Registration Confirmed!</div>
+      <div class="suc-sub">A confirmation email with your ticket has been sent to <strong id="suc-email"></strong>. Check your inbox (and spam folder).</div>
+    </div>
+  </div>
+
+  <div class="email-sent-strip">
+    <i class="fa-solid fa-envelope-open-text"></i>
+    <div>Email sent from <strong>events@ihashop.pk</strong> to <strong id="strip-email"></strong> — your registration card and QR code are included.</div>
+  </div>
+
+  <!-- TICKET DISPLAY -->
+  <div class="ticket-shell">
+    <div class="ticket-topbar">
+      <span><i class="fa-solid fa-ticket" style="margin-right:5px"></i>Official Entry Ticket</span>
+      <span class="ticket-confirmed">✓ CONFIRMED</span>
+    </div>
+    <div class="ticket-card" id="ticket-card">
+      <div class="tc-pattern"></div>
+      <div class="tc-bar"></div>
+      <div class="tc-hdr">
+        <div>
+          <div class="tc-org">✦ IHA Online Shop · Annual Family Event</div>
+          <div class="tc-evname">IHA Family Dinner 2026</div>
+          <div class="tc-metas">
+            <div class="tc-m"><div class="k">Date</div><div class="v">26 July 2026</div></div>
+            <div class="tc-m"><div class="k">Time</div><div class="v">8:00 PM PKT</div></div>
+            <div class="tc-m"><div class="k">Venue</div><div class="v">PC Hotel, Karachi</div></div>
+          </div>
+        </div>
+        <div class="tc-logobox">🏪</div>
+      </div>
+      <div class="tc-tear"></div>
+      <div class="tc-body">
+        <div>
+          <div class="tc-att-lbl">Registered Attendee</div>
+          <div class="tc-name" id="t-name"></div>
+          <div class="tc-detail" id="t-desig"></div>
+          <div class="tc-detail" id="t-comp"></div>
+          <div class="tc-detail" id="t-email" style="font-size:10.5px;color:rgba(255,255,255,.38)"></div>
+          <div class="tc-tid" id="t-tid"></div>
+        </div>
+        <div class="tc-qr">
+          <div id="qr-box"></div>
+          <div class="tc-ql">Scan at entry</div>
+        </div>
+      </div>
+      <div class="tc-foot">
+        <span class="tc-fid" id="t-fid"></span>
+        <span class="tc-tbadge" id="t-tbadge"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn-a btn-green" onclick="dlTicket()"><i class="fa-solid fa-download"></i> Download</button>
+    <button class="btn-a btn-dark"  onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
+    <button class="btn-a btn-out"   onclick="addCal()"><i class="fa-regular fa-calendar-plus"></i> Calendar</button>
+    <button class="btn-a btn-out"   onclick="shareIt()"><i class="fa-solid fa-share-nodes"></i> Share</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast hide" id="toast">
+  <div class="toast-icon" id="t-ico">📧</div>
+  <div><strong id="t-ttl"></strong><span id="t-sub"></span></div>
+</div>
+
+<!-- ════════════════════════════════════════
+     EMAILJS  ←  FILL IN YOUR 3 VALUES BELOW
+     Steps:
+       1. Visit https://emailjs.com  (free account)
+       2. Add Email Service → get SERVICE_ID
+       3. Create Email Template → get TEMPLATE_ID
+          Template variables available:
+            {{to_name}}  {{to_email}}  {{first_name}}
+            {{ticket_id}} {{ticket_type}}
+            {{event_name}} {{event_date}} {{event_time}} {{event_venue}}
+            {{designation}} {{company}} {{dietary}}
+       4. Account → API Keys → get PUBLIC_KEY
+═════════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+const EMAILJS_CONFIG = {
+  publicKey:  'yQnkPTXXr7Zndt-_6',   // ← paste your Public Key  e.g. 'abc123XYZ'
+  serviceId:  'service_9swj4u2',   // ← paste your Service ID  e.g. 'service_xxxxxx'
+  templateId: 'template_iha2026',   // ← paste your Template ID e.g. 'template_xxxxxx'
+};
+
+/* ── INIT ── */
+const EJS_READY = EMAILJS_CONFIG.publicKey && EMAILJS_CONFIG.serviceId && EMAILJS_CONFIG.templateId;
+if (EJS_READY) {
+  emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+} else {
+  document.getElementById('cfg-banner').classList.add('show');
+}
+
+/* ── STATE ── */
+let selTicket = 'Standard';
+function selT(el, t) {
+  document.querySelectorAll('.ttype').forEach(x => x.classList.remove('sel'));
+  el.classList.add('sel'); selTicket = t;
+}
+
+/* ── VALIDATE ── */
+function validate() {
+  let ok = true;
+  [
+    ['firstname','f-fn', v => v.trim().length > 1],
+    ['lastname', 'f-ln', v => v.trim().length > 1],
+    ['email',    'f-em', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)],
+    ['company',  'f-co', v => v.trim().length > 1],
+    ['designation','f-de',v => v.trim().length > 1],
+  ].forEach(([id, fid, fn]) => {
+    const el = document.getElementById(id);
+    const f  = document.getElementById(fid);
+    if (!fn(el.value)) { f.classList.add('err'); ok = false; }
+    else f.classList.remove('err');
+  });
+  if (!document.getElementById('ct').checked) {
+    alert('Please accept the Terms & Conditions to proceed.');
+    ok = false;
+  }
+  return ok;
+}
+
+/* ── REGISTER ── */
+function handleRegister() {
+  if (!validate()) return;
+
+  const btn = document.getElementById('reg-btn');
+  document.getElementById('rbt').style.display = 'none';
+  document.getElementById('rbs').style.display = 'flex';
+  btn.disabled = true;
+
+  const fn   = document.getElementById('firstname').value.trim();
+  const ln   = document.getElementById('lastname').value.trim();
+  const em   = document.getElementById('email').value.trim();
+  const co   = document.getElementById('company').value.trim();
+  const de   = document.getElementById('designation').value.trim();
+  const di   = document.getElementById('dietary').value || 'None';
+  const name = `${fn} ${ln}`;
+  const tid  = 'IHA26-' + Math.random().toString(36).toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,6);
+  const regd = new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+
+  window._R = { fn, name, em, co, de, di, tid, regd };
+
+  // Build ticket visually first
+  buildTicket();
+
+  // Send email then show success
+  showToast('📧','Sending your ticket…','Please wait a moment');
+
+  if (EJS_READY) {
+    const params = {
+      to_email:    em,
+      to_name:     name,
+      first_name:  fn,
+      reply_to:    'events@ihashop.pk',
+      ticket_id:   tid,
+      ticket_type: selTicket,
+      event_name:  'IHA Family Dinner 2026',
+      event_date:  'Sunday, 26 July 2026',
+      event_time:  '8:00 PM — 9:30 PM PKT',
+      event_venue: 'PC Hotel, Club Road, Karachi',
+      designation: de,
+      company:     co,
+      dietary:     di,
+    };
+    emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, params)
+      .then(() => {
+        showToast('✅','Email sent!',`Ticket delivered to ${em}`);
+        revealSuccess();
+      })
+      .catch(err => {
+        console.error('EmailJS error:', err);
+        showToast('⚠️','Email failed',`${err.text || 'Check your EmailJS config'}. Your ticket is still shown below.`);
+        revealSuccess();
+      });
+  } else {
+    // No config — show ticket on-screen only
+    setTimeout(() => {
+      showToast('ℹ️','Demo mode','Configure EmailJS to send real emails');
+      revealSuccess();
+    }, 900);
+  }
+}
+
+/* ── BUILD TICKET ── */
+function buildTicket() {
+  const { name, em, co, de, tid, regd } = window._R;
+  document.getElementById('t-name').textContent  = name;
+  document.getElementById('t-desig').textContent = de;
+  document.getElementById('t-comp').textContent  = co;
+  document.getElementById('t-email').textContent = em;
+  document.getElementById('t-tid').textContent   = `Ticket ID: ${tid}`;
+  document.getElementById('t-fid').textContent   = `${tid}  ·  Registered ${regd}`;
+  document.getElementById('t-tbadge').textContent = selTicket.toUpperCase();
+
+  const qrEl = document.getElementById('qr-box');
+  qrEl.innerHTML = '';
+  new QRCode(qrEl, {
+    text: JSON.stringify({ ticket:tid, name, email:em, event:'IHA Family Dinner 2026', date:'26 July 2026', venue:'PC Hotel, Karachi', type:selTicket }),
+    width:88, height:88,
+    colorDark:'#111827', colorLight:'#ffffff',
+    correctLevel: QRCode.CorrectLevel.M
+  });
+}
+
+/* ── REVEAL SUCCESS ── */
+function revealSuccess() {
+  const { em } = window._R;
+  document.getElementById('suc-email').textContent   = em;
+  document.getElementById('strip-email').textContent = em;
+  document.getElementById('form-page').style.display = 'none';
+  document.getElementById('success-screen').classList.add('on');
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+/* ── DOWNLOAD ── */
+function dlTicket() {
+  const card = document.getElementById('ticket-card');
+  html2canvas(card, { scale:2.5, backgroundColor:'#1e3a5f', useCORS:true, logging:false })
+    .then(c => {
+      const a = document.createElement('a');
+      a.download = `IHADinner2026_${window._R.tid}.png`;
+      a.href = c.toDataURL('image/png');
+      a.click();
+      showToast('✅','Downloaded!','Ticket saved as PNG image');
+    }).catch(() => window.print());
+}
+
+function addCal() {
+  const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('IHA Family Dinner 2026')}&dates=20260726T200000/20260726T213000&location=${encodeURIComponent('PC Hotel, Club Road, Karachi')}&details=${encodeURIComponent('IHA Family Annual Dinner. Ticket: '+window._R.tid)}`;
+  window.open(url,'_blank');
+}
+
+function shareIt() {
+  const d = window._R;
+  const txt = `${d.name} is attending IHA Family Dinner 2026 at PC Hotel, Karachi on 26 July 2026. Ticket: ${d.tid}`;
+  if (navigator.share) navigator.share({ title:'IHA Family Dinner 2026', text:txt, url:location.href });
+  else { navigator.clipboard.writeText(txt); showToast('📋','Copied!','Ticket info copied to clipboard'); }
+}
+
+/* ── TOAST ── */
+let _tt;
+function showToast(ico, title, sub) {
+  const el = document.getElementById('toast');
+  document.getElementById('t-ico').textContent = ico;
+  document.getElementById('t-ttl').textContent = title;
+  document.getElementById('t-sub').textContent = sub;
+  el.classList.remove('hide');
+  clearTimeout(_tt);
+  _tt = setTimeout(() => el.classList.add('hide'), 5000);
+}
+
+/* live error clearing */
+document.querySelectorAll('.field input,.field select').forEach(el =>
+  el.addEventListener('input', () => el.closest('.field')?.classList.remove('err'))
+);
+</script>
+</body>
+</html>
